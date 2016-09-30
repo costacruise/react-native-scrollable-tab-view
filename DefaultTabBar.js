@@ -13,6 +13,7 @@ const DefaultTabBar = React.createClass({
     goToPage: React.PropTypes.func,
     activeTab: React.PropTypes.number,
     tabs: React.PropTypes.array,
+    tabsTestIDs: React.PropTypes.array,
     backgroundColor: React.PropTypes.string,
     activeTextColor: React.PropTypes.string,
     inactiveTextColor: React.PropTypes.string,
@@ -37,6 +38,7 @@ const DefaultTabBar = React.createClass({
     const { activeTextColor, inactiveTextColor, textStyle, } = this.props;
     const textColor = isTabActive ? activeTextColor : inactiveTextColor;
     const fontWeight = isTabActive ? 'bold' : 'normal';
+    const testID = this.props.tabsTestIDs[page];
 
     return <Button
       style={{flex: 1, }}
@@ -44,6 +46,7 @@ const DefaultTabBar = React.createClass({
       accessible={true}
       accessibilityLabel={name}
       accessibilityTraits='button'
+      testID={testID}
       onPress={() => onPressHandler(page)}
     >
       <View style={[styles.tab, this.props.tabStyle, ]}>
